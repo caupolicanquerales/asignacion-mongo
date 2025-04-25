@@ -17,9 +17,6 @@ public class AccreditationController {
 	
 	private Accreditation accreditation;
 	
-	public AccreditationController(Accreditation accreditation) {
-		this.accreditation= accreditation;
-	}
 	
 	@PostMapping("/create")
 	public Mono<ResponseEntity<String>> createAccreditation(@RequestBody AccreditationRequest request){
