@@ -1,4 +1,4 @@
-package com.capo.asignacion_mongo.adapter.in.events;
+package com.capo.adapter.kafkaEvents;
 
 public class RedisDestinationEvent {
 	private String startVertex;

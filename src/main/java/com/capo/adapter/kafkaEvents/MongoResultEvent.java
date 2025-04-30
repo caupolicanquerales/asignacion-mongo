@@ -1,6 +1,6 @@
-package com.capo.asignacion_mongo.adapter.out.events;
+package com.capo.adapter.kafkaEvents;
 
-public class ToRedisResultEvent {
+public class MongoResultEvent {
 	private String id;
 	private String status;
 	

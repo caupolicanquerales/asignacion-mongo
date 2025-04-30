@@ -5,37 +5,35 @@ token:
 spring:
   application:
     name: asignacion-mongo
-	data:
+    data:
       mongodb:
-		host: localhost
-		#host: mongodb
-		port: 27017
-		database: asignacion
+        host: localhost
+        #host: mongodb
+        port: 27017
+        database: asignacion
   cloud:
     function:
-      definition: processorDestination;processorPointOfSale
+      definition: processor
     stream:
+      default-binder: kafka
       default:
         producer:
           useNativeEncoding: true
       bindings:
-        processorDestination-in-0:
-          destination: redis-destination-events
-          group: redis-group
-        processorDestination-out-0:
-          destination: mongo-result-events
-        processorPointOfSale-in-0:
+        processor-in-0:
           destination: redis-point-events
-		  group: redis-group
-        processorPointOfSale-out-0:
-          destination: mongo-result-events
+          group: redis-group
+        processor-out-0:
+          destination: mongo-result-point-events
       kafka:
-      binder:
-        consumer-properties:
-          "value.deserializer": org.springframework.kafka.support.serializer.JsonDeserializer
-          "key.deserializer": org.apache.kafka.common.serialization.StringDeserializer
-          "auto.offset.reset": "earliest"
-          "spring.json.trusted.packages": "com.capo.asignacion_mongo.adapter.in.events.*"
-        producer-properties:
-          "value.serializer": org.springframework.kafka.support.serializer.JsonSerializer
-          "key.serializer": org.apache.kafka.common.serialization.StringSerializer
+        binder:
+          consumer-properties:
+            "value.deserializer": org.springframework.kafka.support.serializer.JsonDeserializer
+            "key.deserializer": org.apache.kafka.common.serialization.StringDeserializer
+            "auto.offset.reset": "earliest"
+            "enable.auto.commit": false
+            "spring.json.trusted.packages": "*"
+          producer-properties:
+            "value.serializer": org.springframework.kafka.support.serializer.JsonSerializer
+            "key.serializer": org.apache.kafka.common.serialization.StringSerializer
+          broker: localhost:9092 
