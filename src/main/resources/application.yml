@@ -13,7 +13,7 @@ spring:
         database: asignacion
   cloud:
     function:
-      definition: processor
+      definition: processor;processorDestination
     stream:
       default-binder: kafka
       default:
@@ -25,6 +25,10 @@ spring:
           group: redis-group
         processor-out-0:
           destination: mongo-result-point-events
+        processorDestination-in-0:
+          destination: redis-destination-events
+        processorDestination-out-0:
+          destination: mongo-result-destination-events
       kafka:
         binder:
           consumer-properties:

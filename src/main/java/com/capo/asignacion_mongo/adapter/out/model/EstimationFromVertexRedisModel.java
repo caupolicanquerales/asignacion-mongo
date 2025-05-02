@@ -1,6 +1,6 @@
 package com.capo.asignacion_mongo.adapter.out.model;
 
-public class ExtimationFromVertexRedisModel {
+public class EstimationFromVertexRedisModel {
 	
 	private String vertex;
 
