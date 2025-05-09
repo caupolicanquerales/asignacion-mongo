@@ -5,12 +5,12 @@ token:
 spring:
   application:
     name: asignacion-mongo
-    data:
-      mongodb:
-        host: localhost
-        #host: mongodb
-        port: 27017
-        database: asignacion
+  data:
+    mongodb:
+      host: localhost
+      #host: mongodb
+      port: 27017
+      database: asignacion
   cloud:
     function:
       definition: processor;processorDestination;publishingCostsAndRoutesFromEvent;processorResultCostsAndRoutes
