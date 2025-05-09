@@ -13,13 +13,15 @@ spring:
         database: asignacion
   cloud:
     function:
-      definition: processor;processorDestination
+      definition: processor;processorDestination;publishingCostsAndRoutesFromEvent;processorResultCostsAndRoutes
     stream:
       default-binder: kafka
       default:
         producer:
           useNativeEncoding: true
       bindings:
+        event-costs-and-routes:
+          destination: mongo-costs-and-routes-events
         processor-in-0:
           destination: redis-point-events
           group: redis-group
@@ -29,6 +31,9 @@ spring:
           destination: redis-destination-events
         processorDestination-out-0:
           destination: mongo-result-destination-events
+        processorResultCostsAndRoutes-in-0:
+          destination: redis-costs-and-routes
+          group: redis-costs-and-routes-group
       kafka:
         binder:
           consumer-properties:

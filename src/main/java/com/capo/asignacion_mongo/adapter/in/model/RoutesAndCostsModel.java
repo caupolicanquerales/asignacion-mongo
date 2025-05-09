@@ -2,7 +2,7 @@ package com.capo.asignacion_mongo.adapter.in.model;
 
 import java.util.Map;
 
-public class GraphRoutesAndCostsFromRedisModel {
+public class RoutesAndCostsModel {
 	
 	private Map<String,Map<Integer,String>> result;
 

@@ -1,6 +1,6 @@
 package com.capo.asignacion_mongo.adapter.in.model;
 
-public class AccreditationRequest {
+public class AccreditationModel {
 	
 	private String travelfrom;
 	private String travelTo;
