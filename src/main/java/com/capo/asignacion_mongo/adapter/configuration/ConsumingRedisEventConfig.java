@@ -31,7 +31,7 @@ public class ConsumingRedisEventConfig {
         return flux -> flux.map(MessageConverter::toRecord)
                            .doOnNext(r -> log.info("get event from Redis for resul Cost and Route {}", r.message()))
                            .map(r-> MapperMongoEvent.mapperCostsAndRoutesFromModel(r.message()))
-                           .map(model-> creatingAccreditation.creatingAccreditation(model))
+                           .doOnNext(model-> creatingAccreditation.creatingAccreditation(model))
                            .subscribe();
                            //.concatMap(r -> this.eventProcessor.process(r.message())
                           //                                    .doOnSuccess(e -> r.acknowledgement().acknowledge())
