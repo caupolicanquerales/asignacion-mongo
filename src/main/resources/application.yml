@@ -13,7 +13,7 @@ spring:
       database: asignacion
   cloud:
     function:
-      definition: processor;processorDestination;publishingCostsAndRoutesFromEvent;processorResultCostsAndRoutes;processorUpdatePointOfSale;processorRemovePointOfSale;processorUpdateDestination
+      definition: processor;processorDestination;publishingCostsAndRoutesFromEvent;processorResultCostsAndRoutes;processorUpdatePointOfSale;processorRemovePointOfSale;processorUpdateDestination;processorRemoveDestination
     stream:
       default-binder: kafka
       default:
@@ -49,6 +49,11 @@ spring:
           group: redis-update-destination
         processorUpdateDestination-out-0:
           destination: mongo-result-update-events
+        processorRemoveDestination-in-0:
+          destination: redis-remove-destination-events
+          group: redis-remove-destination
+        processorRemoveDestination-out-0:
+          destination: mongo-result-remove-events
       kafka:
         binder:
           consumer-properties:

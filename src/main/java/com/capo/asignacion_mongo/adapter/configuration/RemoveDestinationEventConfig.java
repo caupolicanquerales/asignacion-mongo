@@ -11,29 +11,29 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
 import com.capo.adapter.kafkaEvents.MongoResultEvent;
-import com.capo.adapter.kafkaEvents.RedisUpdateDestinationEvent;
-import com.capo.asignacion_mongo.adapter.out.accreditationOperations.UpdateDestination;
+import com.capo.adapter.kafkaEvents.RedisRemoveDestinationEvent;
+import com.capo.asignacion_mongo.adapter.out.accreditationOperations.RemoveDestination;
 import com.capo.asignacion_mongo.adapter.out.model.DestinationToMongoModel;
 import com.capo.asignacion_mongo.adapter.utils.MessageConverter;
 
 import reactor.core.publisher.Flux;
 
 @Configuration
-public class UpdateDestinationEventConfig {
+public class RemoveDestinationEventConfig {
 	
-	private static final Logger log = LoggerFactory.getLogger(UpdateDestinationEventConfig.class);
-	private final UpdateDestination updateDestination;
+	private static final Logger log = LoggerFactory.getLogger(RemoveDestinationEventConfig.class);
+	private final RemoveDestination removeDestination;
 	
-	public UpdateDestinationEventConfig(UpdateDestination updateDestination) {
-		this.updateDestination= updateDestination;
+	public RemoveDestinationEventConfig(RemoveDestination removeDestination) {
+		this.removeDestination= removeDestination;
 	}
 	
 	@Bean
-	public Function<Flux<Message<RedisUpdateDestinationEvent>>, Flux<Message<MongoResultEvent>>> processorUpdateDestination(){
+	public Function<Flux<Message<RedisRemoveDestinationEvent>>, Flux<Message<MongoResultEvent>>> processorRemoveDestination(){
 		return flux-> flux.map(MessageConverter::toRecord)
-				.doOnNext(r -> log.info("get event from Redis to update Destination of Sale {}", r.message()))
+				.doOnNext(r -> log.info("get event from Redis to remove Destination {}", r.message()))
 				//.doOnNext(r -> r.acknowledgement().acknowledge())
-				.map(r-> updateDestination.updateCostDestination(r.message()))
+				.map(r-> removeDestination.removeDestination(r.message()))
 				.concatMap(result->result)
 				.map(this::mapMongoResultEvent)
 				.map(result->toMessageDestination(result));
