@@ -10,7 +10,7 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
-import com.capo.adapter.kafkaEvents.GetPointsOfSaleEvent;
+import com.capo.adapter.kafkaEvents.GetInformationEvent;
 import com.capo.adapter.kafkaEvents.MongoResultPointsOfSaleEvent;
 import com.capo.asignacion_mongo.adapter.out.pointOfSaleOperations.GetPointsOfSale;
 import com.capo.asignacion_mongo.adapter.utils.MessageConverter;
@@ -28,7 +28,7 @@ public class GetPointOfSaleEventConfig {
 	}
 	
 	@Bean
-	public Function<Flux<Message<GetPointsOfSaleEvent>>, Flux<Message<MongoResultPointsOfSaleEvent>>> processorGetPointsOfSale(){
+	public Function<Flux<Message<GetInformationEvent>>, Flux<Message<MongoResultPointsOfSaleEvent>>> processorGetPointsOfSale(){
 		return flux-> flux.map(MessageConverter::toRecord)
 				.doOnNext(r -> log.info("get event from Redis to get all Points of Sale {}", r.message()))
 				//.doOnNext(r -> r.acknowledgement().acknowledge())
