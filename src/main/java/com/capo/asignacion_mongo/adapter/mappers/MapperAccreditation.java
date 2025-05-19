@@ -7,7 +7,7 @@ import com.capo.asignacion_mongo.adapter.in.model.CostsAndRoutesFromResultModel;
 import com.capo.asignacion_mongo.adapter.out.model.AccreditationMongoModel;
 import com.capo.asignacion_mongo.application.domain.model.AccreditationTicketModel;
 
-public class MapperMongoEvent {
+public class MapperAccreditation {
 	
 	public static CostsAndRoutesFromEvent mapperCostsAndRoutesFromEvent(AccreditationModel accreditationModel) {
 		CostsAndRoutesFromEvent event = new CostsAndRoutesFromEvent();

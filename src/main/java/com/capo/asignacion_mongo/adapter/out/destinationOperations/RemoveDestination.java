@@ -1,4 +1,4 @@
-package com.capo.asignacion_mongo.adapter.out.accreditationOperations;
+package com.capo.asignacion_mongo.adapter.out.destinationOperations;
 
 import com.capo.adapter.kafkaEvents.RedisRemoveDestinationEvent;
 import com.capo.asignacion_mongo.adapter.out.model.DestinationToMongoModel;

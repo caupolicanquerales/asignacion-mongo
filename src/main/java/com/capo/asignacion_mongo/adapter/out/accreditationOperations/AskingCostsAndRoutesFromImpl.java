@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.capo.adapter.kafkaEvents.CostsAndRoutesFromEvent;
 import com.capo.asignacion_mongo.adapter.in.model.AccreditationModel;
-import com.capo.asignacion_mongo.adapter.mappers.MapperMongoEvent;
+import com.capo.asignacion_mongo.adapter.mappers.MapperAccreditation;
 import com.capo.asignacion_mongo.adapter.out.emitEvents.EmitingEvent;
 
 import reactor.core.publisher.Mono;
@@ -27,7 +27,7 @@ public class AskingCostsAndRoutesFromImpl implements AskingCostsAndRoutes{
 	@Override
 	public Mono<String> askingCostsAndRoutesFrom(AccreditationModel accreditationModel){
 		return Mono.just(accreditationModel)
-		.map(model-> MapperMongoEvent.mapperCostsAndRoutesFromEvent(model))
+		.map(model-> MapperAccreditation.mapperCostsAndRoutesFromEvent(model))
 		.doOnNext(r -> log.info("asking costs and routes from in Mongo {}", Objects.nonNull(r)))
 		.doOnNext(event->{
 			if(Objects.nonNull(event)) {

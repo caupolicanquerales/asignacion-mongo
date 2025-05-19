@@ -12,7 +12,7 @@ import org.springframework.messaging.support.MessageBuilder;
 
 import com.capo.adapter.kafkaEvents.MongoResultEvent;
 import com.capo.adapter.kafkaEvents.RedisRemoveDestinationEvent;
-import com.capo.asignacion_mongo.adapter.out.accreditationOperations.RemoveDestination;
+import com.capo.asignacion_mongo.adapter.out.destinationOperations.RemoveDestination;
 import com.capo.asignacion_mongo.adapter.out.model.DestinationToMongoModel;
 import com.capo.asignacion_mongo.adapter.utils.MessageConverter;
 

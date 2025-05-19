@@ -12,8 +12,8 @@ import org.springframework.messaging.support.MessageBuilder;
 
 import com.capo.adapter.kafkaEvents.MongoResultEvent;
 import com.capo.adapter.kafkaEvents.RedisRemovePointOfSaleEvent;
-import com.capo.asignacion_mongo.adapter.out.accreditationOperations.RemovePointOfSale;
 import com.capo.asignacion_mongo.adapter.out.model.PointOfSalesToMongoModel;
+import com.capo.asignacion_mongo.adapter.out.pointOfSaleOperations.RemovePointOfSale;
 import com.capo.asignacion_mongo.adapter.utils.MessageConverter;
 
 import reactor.core.publisher.Flux;

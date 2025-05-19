@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.capo.asignacion_mongo.adapter.in.model.CostsAndRoutesFromResultModel;
-import com.capo.asignacion_mongo.adapter.mappers.MapperMongoEvent;
+import com.capo.asignacion_mongo.adapter.mappers.MapperAccreditation;
 import com.capo.asignacion_mongo.adapter.out.persistence.AccreditationMongoRepository;
 import com.capo.asignacion_mongo.adapter.out.persistence.PointOfSaleMongoRepository;
 import com.capo.asignacion_mongo.application.domain.service.AccreditationImpl;
@@ -38,7 +38,7 @@ public class CreatingAccreditationImpl implements CreatingAccreditation{
 				.map(info->accreditation.getAccreditationInformation(info))
 				.map(obj-> obj.createAccreditation())
 				.doOnNext(model-> log.info("passing for the whole process {}", model))
-				.map(model-> MapperMongoEvent.mapperAccreditationMongoModel(model))
+				.map(model-> MapperAccreditation.mapperAccreditationMongoModel(model))
 				.doOnNext(model-> accreditationMongoRepository.save(model).subscribe())
 				.subscribe();
 	}

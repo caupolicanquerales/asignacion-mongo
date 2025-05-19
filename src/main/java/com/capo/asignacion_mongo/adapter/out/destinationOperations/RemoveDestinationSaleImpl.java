@@ -1,4 +1,4 @@
-package com.capo.asignacion_mongo.adapter.out.accreditationOperations;
+package com.capo.asignacion_mongo.adapter.out.destinationOperations;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

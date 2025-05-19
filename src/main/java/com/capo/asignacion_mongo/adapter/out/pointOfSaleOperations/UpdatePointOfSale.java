@@ -1,4 +1,4 @@
-package com.capo.asignacion_mongo.adapter.out.accreditationOperations;
+package com.capo.asignacion_mongo.adapter.out.pointOfSaleOperations;
 
 import com.capo.adapter.kafkaEvents.RedisUpdatePointOfSaleEvent;
 import com.capo.asignacion_mongo.adapter.out.model.PointOfSalesToMongoModel;
